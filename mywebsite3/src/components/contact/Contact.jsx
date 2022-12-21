@@ -1,11 +1,29 @@
 import "./contact.scss"
+import { useState } from 'react';
 
-function contact() {
+function Contact() {
+
+  const [message, setMessage] = useState(false)
+  const handleSubmit = (e)=> {
+    e.preventDefault();
+    setMessage(true);
+  }
   return (
     <div className="contact" id="contact">
-      
+      <div className="left">
+        <img src="http://langleydpac.ca/wp-content/uploads/2014/11/contact.jpg" alt="" />
+      </div>
+      <div className="right">
+        <h2>Contact.</h2>
+        <form onSubmit={handleSubmit}>
+          <input type="text" placeholder="Email" />
+          <textarea placeholder="Message"></textarea>
+          <button type="submit">Send</button>
+          {message && <span>Thanks, I'll reply ASAP</span>}
+        </form>
+      </div>
     </div>
   )
 }
 
-export default contact
+export default Contact
